@@ -7,13 +7,14 @@ export const AuthContext = createContext()
 export const useAuth = () => useContext(AuthContext)
 
 export const executeAuthenticationService = async(username, password) => {
-    const params = new URLSearchParams();
-    params.append('username', username);
-    params.append('password', password);
+    const params = {
+        username: username,
+        password: password
+    };
 
-    return axios.post('http://54.226.15.26:8080/login', params, {
+    return axios.post('https://talks-production.up.railway.app/login', params, {
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
             'Cache-Control': 'no-cache',
         },
     });
