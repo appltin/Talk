@@ -30,7 +30,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-
+        String path = request.getServletPath();
+        // 👉 登入、註冊、錯誤頁面不處理 JWT，直接放行
+        if (path.equals("/login") || path.equals("/register") || path.equals("/error")|| path.equals("/ping")) {
+            chain.doFilter(request, response);
+            return;
+        }
         logger.info("JwtRequestFilter is invoked for request: " + request.getRequestURI());
 
         // 從 HTTP 請求中取得 Authorization 標頭

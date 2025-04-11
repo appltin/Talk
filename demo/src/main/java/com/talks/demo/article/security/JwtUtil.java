@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 public class JwtUtil {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtil.class);
 
-    @Value("${jwt.secret}")
+    @Value("${JWT_SECRET}")
     private String secretKeyString;
 
     private SecretKey secretKey;

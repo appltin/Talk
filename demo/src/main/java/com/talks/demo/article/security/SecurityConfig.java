@@ -4,6 +4,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -39,24 +41,8 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // 禁用 CSRF
                 .authorizeRequests(authz -> authz
-                        .requestMatchers("/login", "/register", "/error").permitAll() // 允許訪問登入和註冊
+                        .requestMatchers("/login", "/register", "/error","/ping").permitAll() // 允許訪問登入和註冊
                         .anyRequest().authenticated() // 其他請求都需要驗證
-                )
-                .formLogin(form -> form
-                        .loginProcessingUrl("/login") // 指定處理登入請求的路由
-                        .successHandler((request, response, authentication) -> {
-                            // 登入成功時生成 JWT
-                            String token = jwtUtil.generateToken(authentication.getName());
-                            response.setContentType("application/json;charset=UTF-8");
-                            response.getWriter().write("{\"token\":\"" + token + "\"}");
-                        })
-                        .failureHandler((request, response, exception) -> {
-                            // 登入失敗時返回錯誤信息
-                            response.setContentType("application/json;charset=UTF-8");
-                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                            response.getWriter().write("{\"status\":\"failure\", \"error\": \"" + exception.getMessage() + "\"}");
-                        })
-                        .permitAll() // 允許訪問登入頁面
                 )
                 .sessionManagement(session -> session
                         // 使用無狀態的 session 策略
@@ -92,5 +78,9 @@ public class SecurityConfig {
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
+    }
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
     }
 }

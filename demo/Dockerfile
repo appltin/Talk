@@ -1,3 +1,15 @@
+# === 階段一：使用 Maven 建置 .jar 檔 ===
+FROM maven:3.9-eclipse-temurin-21 AS builder
+
+WORKDIR /app
+
+# 複製專案原始碼進來
+COPY . .
+
+# 執行打包
+RUN mvn clean package -DskipTests
+
+# === 階段二：使用精簡版 JDK 運行 ===
 FROM openjdk:21-jdk-slim-bullseye
 
 # 安裝工具包
