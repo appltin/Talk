@@ -22,7 +22,8 @@ RUN apt-get update && apt-get install -y iputils-ping default-mysql-client
 WORKDIR /app
 
 # 3. 將本地 target 資料夾中的 jar 文件複製到容器中
-COPY target/demo-0.0.1-SNAPSHOT.jar /app/app.jar
+# COPY target/demo-0.0.1-SNAPSHOT.jar /app/app.jar
+COPY --from=builder /app/target/demo-0.0.1-SNAPSHOT.jar /app/app.jar
 
 # 4. 暴露應用所使用的端口（通常是 8080）
 EXPOSE 8080
