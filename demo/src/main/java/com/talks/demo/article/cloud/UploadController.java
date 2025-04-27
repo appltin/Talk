@@ -1,6 +1,7 @@
 package com.talks.demo.article.cloud;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,11 +22,14 @@ public class UploadController {
     @Autowired
     private S3Client s3Client;
 
+    // S3 存儲桶名稱
+    @Value("${aws.s3.bucket}")
+    String bucketName;
+
     @PostMapping("/uploadImg")
     public ResponseEntity<String> uploadFile(@RequestParam("image") MultipartFile file) {
         try {
-            // S3 存儲桶名稱
-            String bucketName = "elasticbeanstalk-ap-northeast-3-460820365574";
+            //String bucketName = "elasticbeanstalk-ap-northeast-3-460820365574";
 
             // 使用 UUID 生成唯一的文件名，避免文件名衝突
             String originalFilename = Paths.get(file.getOriginalFilename()).getFileName().toString();
