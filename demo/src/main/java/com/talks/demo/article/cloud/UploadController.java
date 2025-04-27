@@ -29,8 +29,6 @@ public class UploadController {
     @PostMapping("/uploadImg")
     public ResponseEntity<String> uploadFile(@RequestParam("image") MultipartFile file) {
         try {
-            //String bucketName = "elasticbeanstalk-ap-northeast-3-460820365574";
-
             // 使用 UUID 生成唯一的文件名，避免文件名衝突
             String originalFilename = Paths.get(file.getOriginalFilename()).getFileName().toString();
             String cleanedFilename = originalFilename.replaceAll("[^a-zA-Z0-9.-]", "_"); // 清理文件名中的特殊字符
@@ -62,7 +60,6 @@ public class UploadController {
     public ResponseEntity<?> deleteImage(@RequestParam String imageUrl) {
         try {
             // 從 imageUrl 解析出 bucket 名稱和 key（即檔案的路徑）
-            String bucketName = "elasticbeanstalk-ap-northeast-3-460820365574"; // S3 bucket 名稱
             String key = imageUrl.substring(imageUrl.lastIndexOf("/") + 1); // 獲取檔案名稱作為 key
 
             // 創建刪除請求
