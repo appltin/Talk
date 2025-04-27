@@ -6,3 +6,4 @@ target/
 .vscode/
 *.iml
 docker-compose.yml
+Dockerfile
