@@ -20,23 +20,23 @@ talks-rust-tau.vercel.app
 ![b4febe26-bc74-4a60-9f48-7260d7ac8a89](https://github.com/user-attachments/assets/69ef2d9a-c6c0-4e1a-abf3-ccca5cabcd1b)
 
 ## 功能介紹
-登入／註冊
+**登入／註冊**
 - 在登入／註冊頁面輸入帳號密碼
 ![Screenshot from 2025-04-28 12-29-42](https://github.com/user-attachments/assets/9d1e1dfc-d3da-4db7-8ad1-d5ff2d7e89c3)
 
-發文
+**發文**
 ![Screenshot from 2025-04-28 12-30-30](https://github.com/user-attachments/assets/5351143b-12b7-41df-8a55-b72289b431f8)
 
-閱讀文章
+**閱讀文章**
 - 可篩選熱門文章或最新文章
 - 可留言和作者互動
 ![Screenshot from 2025-04-28 12-30-47](https://github.com/user-attachments/assets/19f8ea04-0828-4829-b453-d1bf02d22514)
 ![Screenshot from 2025-04-28 12-31-09](https://github.com/user-attachments/assets/1635c7b8-24f8-4452-9803-393597a5fe63)
 
-追蹤指定看板
+**追蹤指定看板**
 ![Screenshot from 2025-04-28 12-30-03](https://github.com/user-attachments/assets/ada910b7-d344-47f0-95ac-18dc61c71050)
 
-修改密碼與刪除帳號
+**修改密碼與刪除帳號**
 ![Screenshot from 2025-04-28 12-34-37](https://github.com/user-attachments/assets/1c3c617b-ad46-4a82-b917-fde280ed5958)
 
   
