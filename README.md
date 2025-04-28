@@ -14,7 +14,7 @@ talks-rust-tau.vercel.app
 - 結合Bootstrap完成網頁版面設置
 - 使用index加速MySQL查詢效率
 - 使用Redis存取熱門文章快取
-- 以S3儲存使用者上傳的圖片與大頭貼
+- 以S3儲存使用者上傳的圖片
 - 前端部署在vercel，後端部屬在railway
 ![未命名設計](https://github.com/user-attachments/assets/247905bf-596f-4c2b-81ed-2648bcb63365)
 ![b4febe26-bc74-4a60-9f48-7260d7ac8a89](https://github.com/user-attachments/assets/69ef2d9a-c6c0-4e1a-abf3-ccca5cabcd1b)
