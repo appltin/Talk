@@ -209,7 +209,7 @@ public class ArticleController {
         });
 
         //存入緩存
-        redisTemplate.opsForValue().set(LATEST_ARTICLES_KEY, articles, 30, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set(LATEST_ARTICLES_KEY, articles, 30, TimeUnit.SECONDS);
 
         return articles;
     }
@@ -465,6 +465,34 @@ public class ArticleController {
         }
     }
 
+    @GetMapping("/suggest")
+    public List<String> suggestTitles(@RequestParam String keyword) {
+
+        return userMapper.suggestTitles(keyword);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> searchArticles(@RequestParam String keyword) {
+        List<ArticleDTO> articles = userMapper.searchByTitleKeyword(keyword);
+
+        articles.forEach(article -> {
+            // 對每一篇文章進行處理
+            // 使用 Jsoup 解析文章內容的 HTML
+            Document doc = Jsoup.parse(article.getContent());
+
+            // 提取前20個字作為摘要
+            String text = doc.body().text();
+            String excerpt = text.length() > 30 ? text.substring(0, 30) : text; // 取得前20個字
+            article.setContent(excerpt);
+
+            // 提取第一張圖片的 URL
+            Element img = doc.select("img").first(); // 選擇第一個 <img> 標籤
+            String imageUrl = img != null ? img.attr("src") : "";
+            article.setFirstImgUrl(imageUrl);
+        });
+
+        return ResponseEntity.ok(articles);
+    }
 
 }
 

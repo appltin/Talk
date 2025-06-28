@@ -139,4 +139,15 @@ public interface UserMapper {
 
     // 查詢留言
     List<Message> selectMessagesByArticleId(@Param("articleId") int articleId);
+
+    // 自動補字
+    @Select("SELECT title FROM article " +
+            "WHERE title LIKE CONCAT('%', #{keyword}, '%') " +
+            "ORDER BY love DESC " +
+            "LIMIT 3")
+    List<String> suggestTitles(@Param("keyword") String keyword);
+
+    //關鍵字搜尋文章
+    @Select("SELECT * FROM article WHERE title LIKE CONCAT('%', #{keyword}, '%') ORDER BY love DESC")
+    List<ArticleDTO> searchByTitleKeyword(@Param("keyword") String keyword);
 }
