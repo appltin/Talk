@@ -59,6 +59,26 @@
     background-color: transparent;
 }
 
+.search-bar-container {
+    width: 100%;
+    max-width: 280px;
+}
+
+.search-bar-container .form-control {
+padding-right: 2rem; /* 給 icon 留空間 */
+height: 36px;
+}
+
+.search-icon-right {
+position: absolute;
+top: 50%;
+right: 10px; /* 右側固定距離 */
+transform: translateY(-50%);
+color: #999;
+font-size: 16px;
+cursor: pointer;
+}
+  
 
 
 

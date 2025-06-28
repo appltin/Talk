@@ -12,6 +12,7 @@ import PageCompotent from './PageComponent.jsx';
 import ReadArticleComponent from './ReadArticleComponent.jsx';
 import UpdateComponent from './UpdateComponent.jsx';
 import AllBoardComponent from './AllBoardComponent.jsx';
+import SearchResultComponent from './SearchResultComponent.jsx'
 
 function AuthenticatedRoute({children}) {
     const authContext = useAuth()
@@ -92,6 +93,13 @@ export default function TalksAppComponent() {
                                 </AuthenticatedRoute>
                             } />
 
+                            <Route path="/search" element={
+                                <AuthenticatedRoute>
+                                    <div>
+                                        <SearchResultComponent/>
+                                    </div>
+                                </AuthenticatedRoute>
+                            } />
 
 
                         </Routes>

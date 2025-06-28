@@ -60,6 +60,12 @@ export default function EditComponent() {
         try {
             const boards = await getAllBoardsInformation(); 
             setAllBoard(boards)
+            
+            // 如果目前還是 Select posting board，就預設第一個
+            if (boards.length > 0 && border === 'Select posting board') {
+                setBorder(boards[0].boardName);
+                setBoardId(boards[0].id);
+            }
         } catch (error) {
             console.error('Failed to get all board:', error);
         }
@@ -77,7 +83,7 @@ export default function EditComponent() {
                 console.log(imageUrl)
 
                 // 將圖片插入到當前光標位置或指定位置
-                const imgTag = `<img src="${imageUrl}" alt="Image" />`;
+                const imgTag = `<p><img src="${imageUrl}" alt="Image" /></p>`;
                 const editor = editorRef.current; // 獲取 editor 引用
                 editor.innerHTML += imgTag;
             } catch (error) {

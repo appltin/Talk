@@ -1,24 +1,10 @@
 import { createContext, useContext, useState } from "react";
 import axios from 'axios'
-import { getAvatarAndUerId, getUserInformation } from '../api/TalksApiService'
+import { getAvatarAndUerId, getUserInformation, executeAuthenticationService } from '../api/TalksApiService'
 
 //1: Create a Context
 export const AuthContext = createContext()
 export const useAuth = () => useContext(AuthContext)
-
-export const executeAuthenticationService = async(username, password) => {
-    const params = {
-        username: username,
-        password: password
-    };
-
-    return axios.post('https://talks-production.up.railway.app/login', params, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Cache-Control': 'no-cache',
-        },
-    });
-}
 
 
 //2: Share the created context with other components
