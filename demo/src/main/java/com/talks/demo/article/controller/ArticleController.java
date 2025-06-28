@@ -425,9 +425,9 @@ public class ArticleController {
             List<Board> allBoards =  (List<Board>) redisTemplate.opsForValue().get(ALL_BOARDS_KEY);
 
             if(allBoards == null){
-                List<Board> boards = userMapper.selectAllBoards();
+                allBoards = userMapper.selectAllBoards();
                 //存入緩存
-                redisTemplate.opsForValue().set(ALL_BOARDS_KEY, boards, 60, TimeUnit.DAYS);
+                redisTemplate.opsForValue().set(ALL_BOARDS_KEY, allBoards, 60, TimeUnit.DAYS);
             }
 
             return ResponseEntity.ok(allBoards);
