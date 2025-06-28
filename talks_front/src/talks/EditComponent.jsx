@@ -60,12 +60,6 @@ export default function EditComponent() {
         try {
             const boards = await getAllBoardsInformation(); 
             setAllBoard(boards)
-            
-            // 如果目前還是 Select posting board，就預設第一個
-            if (boards.length > 0 && border === 'Select posting board') {
-                setBorder(boards[0].boardName);
-                setBoardId(boards[0].id);
-            }
         } catch (error) {
             console.error('Failed to get all board:', error);
         }
