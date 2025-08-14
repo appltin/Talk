@@ -128,11 +128,6 @@
 			<artifactId>logback-classic</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.stripe</groupId>
-			<artifactId>stripe-java</artifactId>
-			<version>24.10.0</version> <!-- 或最新版本 -->
-		</dependency>
 	</dependencies>
 
 	<build>

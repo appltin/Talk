@@ -32,7 +32,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         String path = request.getServletPath();
         // 👉 登入、註冊、錯誤頁面不處理 JWT，直接放行
-        if (path.equals("/login") || path.equals("/register") || path.equals("/error")|| path.equals("/ping")) {
+        if (path.equals("/login") || path.equals("/register") || path.equals("/error")|| path.equals("/ping") || path.equals("/donate/ecpay-callback")) {
             chain.doFilter(request, response);
             return;
         }

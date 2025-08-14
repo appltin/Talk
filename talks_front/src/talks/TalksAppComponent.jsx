@@ -13,6 +13,7 @@ import ReadArticleComponent from './ReadArticleComponent.jsx';
 import UpdateComponent from './UpdateComponent.jsx';
 import AllBoardComponent from './AllBoardComponent.jsx';
 import SearchResultComponent from './SearchResultComponent.jsx'
+import DnonateSuccessComponent from './DnonateSuccessComponent.jsx'
 
 function AuthenticatedRoute({children}) {
     const authContext = useAuth()
@@ -101,7 +102,13 @@ export default function TalksAppComponent() {
                                 </AuthenticatedRoute>
                             } />
 
-
+                            <Route path="/donate/success" element={
+                                <AuthenticatedRoute>
+                                    <div>
+                                        <DnonateSuccessComponent/>
+                                    </div>
+                                </AuthenticatedRoute>
+                            } />
                         </Routes>
                     </LayoutWithHeader>
                 </BrowserRouter>

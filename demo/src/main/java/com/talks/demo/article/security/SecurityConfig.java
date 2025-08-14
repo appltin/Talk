@@ -41,7 +41,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // 禁用 CSRF
                 .authorizeRequests(authz -> authz
-                        .requestMatchers("/login", "/register", "/error","/ping").permitAll() // 允許訪問登入和註冊
+                        .requestMatchers("/login", "/register", "/error","/ping","/donate/ecpay-callback").permitAll() // 允許訪問登入和註冊
                         .anyRequest().authenticated() // 其他請求都需要驗證
                 )
                 .sessionManagement(session -> session
