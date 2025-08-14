@@ -8,7 +8,6 @@
   <h3>點擊下方按鈕測試綠界金流跳轉</h3>
   <form id='ecpayForm' action='https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5' method='post'>
     <!-- <input type='hidden' name='ClientBackURL' value='http://localhost:3000/donate/success'/> -->
-
     <!-- <input type='hidden' name='EncryptType' value='1'/>
     <input type='hidden' name='PaymentType' value='aio'/>
     <input type='hidden' name='ItemName' value='Apple iphone 15'/>
@@ -21,7 +20,7 @@
     <input type='hidden' name='TradeDesc' value='促銷方案'/>
     <input type='hidden' name='ChoosePayment' value='ALL'/> -->
 
-    <input type='hidden' name='ClientBackURL' value='https://talks-rust-tau.vercel.app/donate/success'/><input type='hidden' name='EncryptType' value='1'/><input type='hidden' name='PaymentType' value='aio'/><input type='hidden' name='ItemName' value='donate website'/><input type='hidden' name='MerchantTradeDate' value='2023/03/12 15:30:23'/><input type='hidden' name='ReturnURL' value='https://talks-production.up.railway.app/donate/ecpay-callback'/><input type='hidden' name='MerchantID' value='3002607'/><input type='hidden' name='TotalAmount' value='150'/><input type='hidden' name='CheckMacValue' value='09D0D657A0B95D4C403632A15CD723C12865319C0D9EA0D5C8673D670D08525A'/><input type='hidden' name='MerchantTradeNo' value='EC17551897291876A3'/><input type='hidden' name='TradeDesc' value='donate~'/><input type='hidden' name='ChoosePayment' value='ALL'/>
+    <input type='hidden' name='EncryptType' value='1'/><input type='hidden' name='PaymentType' value='aio'/><input type='hidden' name='ItemName' value='donate website'/><input type='hidden' name='MerchantTradeDate' value='2023/03/12 15:30:23'/><input type='hidden' name='ReturnURL' value='http://localhost:8080/donate/ecpay-callback'/><input type='hidden' name='MerchantID' value='3002607'/><input type='hidden' name='TotalAmount' value='150'/><input type='hidden' name='CheckMacValue' value='8AF5B4BB28CC005BA23F7CB2A54E4B43B7E8E4E1DE0A427E26EC9024A4F0C9DA'/><input type='hidden' name='MerchantTradeNo' value='EC1755190521924767'/><input type='hidden' name='TradeDesc' value='donate'/><input type='hidden' name='ChoosePayment' value='ALL'/>
     <!-- ✅ 放在 form 裡的按鈕 -->
     <button type="submit">🚀 前往綠界付款頁面</button>
   </form>

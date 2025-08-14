@@ -18,7 +18,7 @@ public class DonationService {
         String merchantTradeNo = genMerchantTradeNo();
         String tradeDesc = "donate";
         String itemName = "donate website";
-        String returnUrl = "http://localhost:8080/donate/ecpay-callback";
+        String returnUrl = "https://talks-production.up.railway.app/donate/ecpay-callback";
         String clientBackUrl = "https://talks-rust-tau.vercel.app/donate/success";
 
         Map<String, String> params = new HashMap<>();
