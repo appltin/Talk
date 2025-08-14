@@ -18,7 +18,7 @@ public class DonationService {
         String merchantTradeNo = genMerchantTradeNo();
         String tradeDesc = "donate";
         String itemName = "donate website";
-        String returnUrl = "https://talks-production.up.railway.app/donate/ecpay-callback";
+        String returnUrl = "http://localhost:8080/donate/ecpay-callback";
         String clientBackUrl = "https://talks-rust-tau.vercel.app/donate/success";
 
         Map<String, String> params = new HashMap<>();
@@ -31,7 +31,7 @@ public class DonationService {
         params.put("ItemName", itemName);
         params.put("ReturnURL", returnUrl);
         params.put("ChoosePayment", "ALL");
-        params.put("ClientBackURL", clientBackUrl);
+//        params.put("ClientBackURL", clientBackUrl);
         params.put("EncryptType", "1");
 
         Map<String, String> macParams = new HashMap<>(params);
