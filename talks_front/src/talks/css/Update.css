@@ -16,6 +16,11 @@
     height: 90px;
 }
 
+.updatePage_donate{
+    font-size: 50px;
+    color: #3bfc6e;
+}
+
 .updatePage_i{
     font-size: 50px;
     color: #ffffff;
@@ -28,7 +33,7 @@
 
 .updatePage_iArticle{
     font-size: 50px;
-    color: #5df86a;
+    color: #3afcd8;
 }
 
 .updatePage_whtieArea{

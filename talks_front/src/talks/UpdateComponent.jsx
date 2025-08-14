@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes , useNavigate} from 'react-router-dom';
-import { getArticlesByUserId, deleteArticle, getFavoriteBoardInfo, removeFavoriteBoard, changePassword, deleteAccount } from './api/TalksApiService'
+import { donate, getArticlesByUserId, deleteArticle, getFavoriteBoardInfo, removeFavoriteBoard, changePassword, deleteAccount } from './api/TalksApiService'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/Update.css'
 import { useAuth } from './security/AuthContext';
@@ -11,6 +11,7 @@ import { Dropdown } from 'react-bootstrap';
 import { FaChevronDown } from 'react-icons/fa';
 import { faFilePen, faPenNib, faBell } from '@fortawesome/free-solid-svg-icons';  // 導入具體圖標
 import { Modal, Button, Form } from 'react-bootstrap';
+import axios from 'axios';
 
 
 function UpdateComponent() {
@@ -32,6 +33,22 @@ function UpdateComponent() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [amount, setAmount] = useState(150);   
+  const handleSelectAmount = (v) => setAmount(v);
+
+  // 贊助平臺
+  const handleDonate = async () => {
+    try {
+      const formHtml = await donate(0, amount); // 0 代表贊助平台
+      const w = window.open('', '_blank');       // 新視窗自動送出表單
+      w.document.open();
+      w.document.write(formHtml);
+      w.document.close();
+    } catch (e) {
+      alert('送出贊助失敗，請稍後再試');
+    }
+  };
   
   //更新密碼
   const handleSubmit = async(e) => {
@@ -178,10 +195,18 @@ function UpdateComponent() {
                   <i class = "bi bi-gear-fill me-3 updatePage_i"></i>
                   <h3 className = 'm-0'>Setting</h3>
               </button>
+
+              <button 
+                onClick = {() => setSelectedMenu('donate')}
+                className = 'd-flex w-100 justify-content-start align-items-center py-3 updatePage_button border-0'
+              >
+                  <i class = "bi bi-piggy-bank me-3 updatePage_donate"></i>
+                  <h3 className = 'm-0'>Donate</h3>
+              </button>
           </div>
 
 
-          {/* 右側白色區塊 */}
+          {/* 右側白色內容區塊 */}
           <div className="col-9 content updatePage_whtieArea no-scrollbar" style={{ padding: '20px 40px', background: '#fff', height: '100%', overflowY : 'scroll'}}>
             <div className='py-1 px-3'>
               {/* 選項一,  我的文章 */}
@@ -341,6 +366,67 @@ function UpdateComponent() {
                 
               </div>
             }
+
+            {/* 選項4, 贊助 */}
+            {selectedMenu === 'donate' && 
+
+              <div className='updatePage_noShadow'>
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Donate to This Site
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>一起支持，讓平台走得更遠！</strong>
+                          你的每一份心意，都是讓這個網站持續運作、改善與成長的動力。
+
+                          {/* 金額三選一 */}
+                          <div className="mt-3">
+                            <label className="form-label">選擇贊助金額：</label>
+                            <div className="btn-group" role="group" aria-label="Donation amount">
+                              {[50,150,300].map(v=>(
+                                <button
+                                  key={v}
+                                  type="button"
+                                  className={`btn ${amount===v ? 'btn-primary' : 'btn-outline-primary'}`}
+                                  onClick={()=>handleSelectAmount(v)}
+                                >${v}</button>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Donate */}
+                          <div className="mt-3">
+                            <button type="button" className="btn btn-primary text-white" onClick={handleDonate}>
+                              Donate
+                            </button>
+                            <small className="text-muted ms-2">付款成功將導回成功頁。</small>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        My Donation History
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>此功能開發中，敬請期待</strong> 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                
+              </div>
+              
+            }
+
           </div>
 
 

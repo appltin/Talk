@@ -408,3 +408,16 @@ export async function searchKeyWord(keyword) {
       return [];
     }
 }
+
+// 贊助本站
+export async function donate(articleId = 0, amount) {
+  try {
+    const res = await axios.post('http://localhost:8080/donate/create', null, {
+      params: { articleId, amount } // 後端只收這兩個參數
+    });
+    return res.data; // HTML 字串
+  } catch (e) {
+    console.error('建立贊助訂單失敗：', e);
+    throw e;
+  }
+}

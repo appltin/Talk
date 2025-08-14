@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>綠界測試跳轉</title>
+</head>
+<body>
+  <h3>點擊下方按鈕測試綠界金流跳轉</h3>
+  <form id='ecpayForm' action='https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5' method='post'>
+    <!-- <input type='hidden' name='ClientBackURL' value='http://localhost:3000/donate/success'/> -->
+
+    <!-- <input type='hidden' name='EncryptType' value='1'/>
+    <input type='hidden' name='PaymentType' value='aio'/>
+    <input type='hidden' name='ItemName' value='Apple iphone 15'/>
+    <input type='hidden' name='MerchantTradeDate' value='2023/03/12 15:30:23'/>
+    <input type='hidden' name='ReturnURL' value='https://www.ecpay.com.tw/receive.php'/>
+    <input type='hidden' name='MerchantID' value='3002607'/>
+    <input type='hidden' name='TotalAmount' value='30000'/>
+    <input type='hidden' name='CheckMacValue' value='6C51C9E6888DE861FD62FB1DD17029FC742634498FD813DC43D4243B5685B840'/>
+    <input type='hidden' name='MerchantTradeNo' value='ecpay20230312153023'/>
+    <input type='hidden' name='TradeDesc' value='促銷方案'/>
+    <input type='hidden' name='ChoosePayment' value='ALL'/> -->
+
+    <input type='hidden' name='ClientBackURL' value='http://localhost:3000/donate/success'/><input type='hidden' name='EncryptType' value='1'/><input type='hidden' name='PaymentType' value='aio'/><input type='hidden' name='ItemName' value='Apple iphone 15'/><input type='hidden' name='MerchantTradeDate' value='2023/03/12 15:30:23'/><input type='hidden' name='ReturnURL' value='https://2af4e466f8d3.ngrok-free.app/donate/ecpay-callback'/><input type='hidden' name='MerchantID' value='3002607'/><input type='hidden' name='TotalAmount' value='300'/><input type='hidden' name='CheckMacValue' value='D3C0DDBFF28F60A09F71C48C64D93CE76FD3C986D845EB98876DCB3F6411F98B'/><input type='hidden' name='MerchantTradeNo' value='EC175515498830670B'/><input type='hidden' name='TradeDesc' value='促銷方案'/><input type='hidden' name='ChoosePayment' value='ALL'/>
+    <!-- ✅ 放在 form 裡的按鈕 -->
+    <button type="submit">🚀 前往綠界付款頁面</button>
+  </form>
+</body>
+</html>
