@@ -16,7 +16,7 @@ public class DonationService {
 
     public String createEcpayOrder(Long articleId, Double amount) {
         String merchantTradeNo = genMerchantTradeNo();
-        String tradeDesc = "donate~";
+        String tradeDesc = "donate";
         String itemName = "donate website";
         String returnUrl = "https://talks-production.up.railway.app/donate/ecpay-callback";
         String clientBackUrl = "https://talks-rust-tau.vercel.app/donate/success";
