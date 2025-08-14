@@ -31,7 +31,7 @@ public class DonationService {
         params.put("ItemName", itemName);
         params.put("ReturnURL", returnUrl);
         params.put("ChoosePayment", "ALL");
-//        params.put("ClientBackURL", clientBackUrl);
+        params.put("ClientBackURL", clientBackUrl);
         params.put("EncryptType", "1");
 
         Map<String, String> macParams = new HashMap<>(params);
